@@ -6,6 +6,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordList {
+    public static void main (String[] args) {
+        try {
+            initialize();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        printWords();
+    }
+
+
     public static ArrayList list = new ArrayList<String>();
 
     public static void initialize () throws FileNotFoundException {
