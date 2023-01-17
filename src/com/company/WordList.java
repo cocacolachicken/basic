@@ -14,16 +14,29 @@ public class WordList {
 
         }
 
-        list = (ArrayList) Filter.letterInQuantity('d', 1, list);
+        list = (ArrayList) Filter.letterAtLeastQuantity('a', 1, list);
 
         printWords();
-    }
 
+        try {
+            initialize();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        System.out.println("------------------");
+
+        list = (ArrayList) Filter.letterInQuantity('a', 2, list);
+
+        printWords();
+
+    }
 
     public static ArrayList list = new ArrayList<String>();
 
     public static void initialize () throws FileNotFoundException {
-
+        list.clear();
 
         Scanner scanner = new Scanner(new File("src/valid-wordle-words.txt"));
 

@@ -4,14 +4,17 @@ public class Letter {
     private char letter;
     private LetterStatus status;
 
-    public Letter (char l, char s) {
+    public Letter () {
+        this.letter = '?';
+        this.status = LetterStatus.UNKNOWN;
+    }
+
+    public Letter (char l) {
         letter = l;
-        if (s == 'g') {
-            status = LetterStatus.IN;
-        } else if (s == 'y') {
-            status = LetterStatus.ELSEWHERE;
-        } else if (s == 'r') {
-            status = LetterStatus.NOT;
+        if (Character.isLowerCase(l)) {
+            this.status = LetterStatus.ELSEWHERE;
+        } else {
+            this.status = LetterStatus.IN;
         }
     }
 
