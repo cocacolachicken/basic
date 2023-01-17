@@ -1,4 +1,6 @@
-package com.company;
+package main.java;
+
+import main.java.Filter;
 
 import java.io.File;
 import java.io.FileNotFoundException;

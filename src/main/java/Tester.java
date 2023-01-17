@@ -1,4 +1,4 @@
-package com.company;
+package main.java;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
