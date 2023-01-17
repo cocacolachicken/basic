@@ -14,6 +14,8 @@ public class WordList {
 
         }
 
+        list = (ArrayList) Filter.letterInQuantity('d', 1, list);
+
         printWords();
     }
 

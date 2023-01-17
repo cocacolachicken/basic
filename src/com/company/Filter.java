@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Filter {
@@ -24,5 +25,10 @@ public class Filter {
 
     public static List letterNotIn (char letter, ArrayList<String> words) {
         return words.stream().filter((String s) -> (!s.contains(letter + ""))).collect(Collectors.toList());
+    }
+
+    public static List letterInQuantity (char letter, int quantity, ArrayList<String> words) {
+        Pattern pattern = Pattern.compile("[" + letter + "]{" + quantity + "," + quantity + "}");
+        return words.stream().filter(pattern.asPredicate()).collect(Collectors.toList());
     }
 }
