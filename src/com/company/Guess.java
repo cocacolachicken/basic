@@ -31,7 +31,7 @@ public class Guess {
     public Guess (String str) throws Exception {
         if (str.length() != 5) {
             throw new Exception ("Please enter in a 5 letter word");
-        } else if (!str.matches("^[a-zA-Z]*$")) {
+        } else if (!str.matches("^[a-zA-Z?]*$")) {
             throw new Exception ("Please enter in only upper or lowercase letters");
         }
 
