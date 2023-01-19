@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         //creating label email
         Text text = new Text("Please input the letters you have");
-
+        int error=1;
 
 
         //Creating Text Filed for email
@@ -26,10 +26,14 @@ public class Main extends Application {
 
 
 
-        //Creating Button
+        //Creating Buttons
         Button button = new Button("Submit");
         button.setPrefWidth(400);
         button.setPrefHeight(100);
+
+        Button button1 = new Button("Submit");
+        button1.setPrefWidth(400);
+        button1.setPrefHeight(100);
         //Creating a Grid Pane
         GridPane gridPane = new GridPane();
 
@@ -54,7 +58,7 @@ public class Main extends Application {
 
         //Styling nodes
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
+        button1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         text.setStyle("-fx-font: normal bold 20px 'serif' ");
 
         gridPane.setStyle("-fx-background-color: WHITE;");
@@ -75,6 +79,9 @@ public class Main extends Application {
             textField.clear();
             System.out.println(word);
         });
+        if(error==1){
+            gridPane.add(button1, 1, 7);
+        }
 
 
     }
