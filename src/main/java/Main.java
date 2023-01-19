@@ -31,7 +31,11 @@ public class Main extends Application {
         button.setPrefWidth(400);
         button.setPrefHeight(100);
 
-        Button button1 = new Button("Submit");
+        Button button1 = new Button("ERROR");
+        button1.setPrefWidth(400);
+        button1.setPrefHeight(100);
+
+        Button button2 = new Button("ERROR");
         button1.setPrefWidth(400);
         button1.setPrefHeight(100);
         //Creating a Grid Pane
@@ -58,7 +62,8 @@ public class Main extends Application {
 
         //Styling nodes
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        button1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        button1.setStyle("-fx-background-color: RED; -fx-text-fill: white;");
+        button2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         text.setStyle("-fx-font: normal bold 20px 'serif' ");
 
         gridPane.setStyle("-fx-background-color: WHITE;");
@@ -78,6 +83,7 @@ public class Main extends Application {
             String word = textField.getText();
             textField.clear();
             System.out.println(word);
+            gridPane.add(button2, 1, 7);
         });
         if(error==1){
             gridPane.add(button1, 1, 7);
