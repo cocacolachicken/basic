@@ -10,7 +10,7 @@ public class Letter {
     }
 
     public Letter (char l) {
-        letter = l;
+        letter = Character.toLowerCase(l);
         if (Character.isLowerCase(l)) {
             this.status = LetterStatus.ELSEWHERE;
         } else {
