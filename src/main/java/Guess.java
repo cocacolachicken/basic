@@ -1,5 +1,6 @@
 package main.java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Guess {
@@ -51,7 +52,27 @@ public class Guess {
         return guess[x];
     }
 
-    public void processGuess (List words) {
+    public List processGuess (List words) {
+        ArrayList l = (ArrayList) words;
+        String elsewhere = "";
+        for (int x = 0; x != 5; x++) {
+            if (guess[x].getStatus() == LetterStatus.IN) {
+                elsewhere += Integer.toString(x);
+            }
+        }
 
+        for (int x = 0; x != 5; x++) {
+            if (guess[x].getStatus() == LetterStatus.UNKNOWN) {
+                System.out.println("nothing");
+            } else if (guess[x].getStatus() == LetterStatus.IN) {
+                l = (ArrayList) Filter.letterKnown(x, guess[x].getLetter(), l);
+                System.out.println("Known");
+            } else if (guess[x].getStatus() == LetterStatus.ELSEWHERE) {
+                l = (ArrayList) Filter.letterHas(elsewhere + x, guess[x].getLetter(), l);
+                System.out.println("Has");
+                System.out.println(elsewhere + x);
+            }
+        }
+        return l;
     }
 }

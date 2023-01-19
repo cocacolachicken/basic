@@ -5,6 +5,7 @@ import main.java.Filter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class WordList {
@@ -35,7 +36,7 @@ public class WordList {
 
     }
 
-    public static ArrayList list = new ArrayList<String>();
+    private static ArrayList list = new ArrayList<String>();
 
     public static void initialize () throws FileNotFoundException {
         list.clear();
@@ -47,9 +48,35 @@ public class WordList {
         }
     }
 
+    public static void setList (ArrayList l) {
+        list = l;
+    }
+
     public static void printWords () {
         for (int x = 0; x != list.size(); x++) {
             System.out.println(list.get(x));
         }
+        if (list.size() == 0) {
+            System.out.println("Nothing");
+        }
+    }
+
+    public static List getList () {
+        return list;
+    }
+
+    public static List processGuess (Guess g) {
+        list = (ArrayList) g.processGuess(list);
+        return list;
+    }
+
+    public static List processNewGuess (Guess g) {
+        try {
+            initialize();
+        } catch(Exception ignore) {
+
+        }
+        list = (ArrayList) g.processGuess(list);
+        return list;
     }
 }
