@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         //creating label email
         Text text = new Text("Please input the letters you have");
-        int error=1;
+
 
 
         //Creating Text Filed for email
@@ -86,10 +86,10 @@ public class Main extends Application {
             button2.setPrefWidth(400);
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+            if((word.length() >5)|| word.equals("")){
+                gridPane.add(button1, 1, 7);
+            }
         });
-        if(error==1){
-            gridPane.add(button1, 1, 7);
-        }
 
 
     }
