@@ -41,7 +41,7 @@ public class Main extends Application {
         GridPane gridPane = new GridPane();
 
         //Setting size for the pane
-        gridPane.setMinSize(600, 600);
+        gridPane.setMinSize(800, 700);
 
         //Setting the padding
         gridPane.setPadding(new Insets(10, 10, 10, 10));
@@ -86,6 +86,7 @@ public class Main extends Application {
             button2.setPrefWidth(400);
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
             if((word.length() >5)|| word.equals("")){
                 gridPane.add(button1, 1, 7);
             }
