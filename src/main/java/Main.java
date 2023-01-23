@@ -81,6 +81,8 @@ public class Main extends Application {
             String word = textField.getText();
             textField.clear();
             System.out.println(word);
+            InputProcessor.takeInput(word);
+
             Button button2 = new Button("suggestions");
             gridPane.add(button2, 1, 7);
             button2.setPrefWidth(400);
