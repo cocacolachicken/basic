@@ -1,7 +1,5 @@
 package main.java;
 
-import main.java.Filter;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -38,6 +36,10 @@ public class WordList {
 
     private static ArrayList list = new ArrayList<String>();
 
+    /** Sets ArrayList list to the list of words in valid-wordle-words.txt
+     *
+     * @throws FileNotFoundException valid-wordle-words.txt must not exist
+     */
     public static void initialize () throws FileNotFoundException {
         list.clear();
 
@@ -48,10 +50,15 @@ public class WordList {
         }
     }
 
+    /** Sets the current list to another list
+     * @param l
+     */
     public static void setList (ArrayList l) {
         list = l;
     }
 
+    /** prints every word in the list
+     */
     public static void printWords () {
         for (int x = 0; x != list.size(); x++) {
             System.out.println(list.get(x));
@@ -65,11 +72,21 @@ public class WordList {
         return list;
     }
 
+    /** Processes the guess in this method
+     *
+     * @param g the guess to be processed
+     * @return the list after being processed
+     */
     public static List processGuess (Guess g) {
         list = (ArrayList) g.processGuess(list);
         return list;
     }
 
+    /** Processes the guess in this method with a new list of words
+     *
+     * @param g the guess to be processed
+     * @return the list after being processed
+     */
     public static List processNewGuess (Guess g) {
         try {
             initialize();
