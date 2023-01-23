@@ -41,7 +41,7 @@ public class Main extends Application {
         GridPane gridPane = new GridPane();
 
         //Setting size for the pane
-        gridPane.setMinSize(600, 400);
+        gridPane.setMinSize(600, 600);
 
         //Setting the padding
         gridPane.setPadding(new Insets(10, 10, 10, 10));
