@@ -50,6 +50,20 @@ public class WordList {
         }
     }
 
+    /** Sets ArrayList list to the list of words in wordle-answers-alphabetical.txt
+     *
+     * @throws FileNotFoundException wordle-answers-alphabetical.txt must not exist
+     */
+    public static void initializeAnswers () throws FileNotFoundException {
+        list.clear();
+
+        Scanner scanner = new Scanner(new File("src/wordle-answers-alphabetical.txt"));
+
+        while (scanner.hasNextLine()) {
+            list.add(scanner.nextLine());
+        }
+    }
+
     /** Sets the current list to another list
      * @param l
      */

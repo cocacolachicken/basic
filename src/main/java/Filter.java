@@ -29,8 +29,10 @@ public class Filter {
     public static List letterHas (String taken, char letter, ArrayList<String> words) {
         List<String> l = words;
 
+        // Filters words that don't contain letter
         l = words.stream().filter((String s) -> (s.contains(letter + ""))).collect(Collectors.toList());
 
+        // Filters words that have letter at any of the positions in "taken"
         for (int x = 0; x != taken.length(); x++) {
             int finalX = x;
             l = l.stream().filter((String s) -> (letter != s.charAt(Integer.parseInt(taken.charAt(finalX) + "")))).collect(Collectors.toList());
@@ -48,7 +50,7 @@ public class Filter {
     public static List letterNotIn (char letter, ArrayList<String> words) {
         return words.stream().filter((String s) -> (!s.contains(letter + ""))).collect(Collectors.toList());
     }
-
+    
     /** Combs through a list of words ("words") and returns a sublist of "words" such that the elements retained in the sublist
      *
      * Used when it is known how much of a certain letter is in
