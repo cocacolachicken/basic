@@ -26,7 +26,7 @@ public class Main extends Application {
 
 
 
-        //Creating Buttons
+        //Creating Buttons for submission and errors
         Button button = new Button("Submit");
         button.setPrefWidth(400);
         button.setPrefHeight(100);
@@ -83,6 +83,7 @@ public class Main extends Application {
             System.out.println(word);
             InputProcessor.takeInput(word);
 
+            //Creating a Button and styling it
             Button button2 = new Button("suggestions");
             gridPane.add(button2, 1, 7);
             button2.setPrefWidth(400);
