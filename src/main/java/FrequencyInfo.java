@@ -1,25 +1,26 @@
 package main.java;
 
-import java.io.FileNotFoundException;
+import java.util.List;
 
 public class FrequencyInfo {
-    public static int alphaToChar (char c) {
+    public static int alphaToInt (char c) {
         return Character.toLowerCase(c) - 97;
     }
 
-    // This was just written to get info quickly rather than doing this every time it starts up
-    public static void main (String args[]) throws FileNotFoundException {
-        WordList.initializeAnswers();
-        int[] letters = new int[26];
+    public static int[][] getFrequency (List s) {
+        int[][] letterFrequency = new int[26][5];
+        String temp = "";
 
-        for (int x = 0; x != WordList.getList().size(); x++) {
+        for (int x = 0; x != s.size(); x ++) {
             for (int z = 0; z != 5; z++) {
-                letters[alphaToChar(Character.toLowerCase(((String)WordList.getList().get(x)).charAt(z)))] ++;
+                char letterToExamine = Character.toLowerCase(((String) s.get(x)).charAt(z));
+
+
             }
+
+            temp = "";
         }
 
-        for (int x = 0; x != 26; x++) {
-            System.out.println( (char) (x+65) + ": " + letters[x]);
-        }
+        return letterFrequency;
     }
 }
