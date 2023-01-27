@@ -28,12 +28,12 @@ public class Main extends Application {
 
         //Creating Buttons for submission and errors
         Button button = new Button("Submit");
-        button.setPrefWidth(400);
+        button.setPrefWidth(550);
         button.setPrefHeight(100);
 
         Button button1 = new Button("ERROR");
-        button1.setPrefWidth(400);
-        button1.setPrefHeight(100);
+        button1.setPrefWidth(550);
+        button1.setPrefHeight(200);
 
 
 
@@ -64,7 +64,7 @@ public class Main extends Application {
         button1.setStyle("-fx-background-color: RED; -fx-text-fill: white;");
         text.setStyle("-fx-font: normal bold 20px 'serif' ");
 
-        gridPane.setStyle("-fx-background-color: WHITE;");
+        gridPane.setStyle("-fx-background-color: BEIGE;");
 
         //Creating a scene object
         Scene scene = new Scene(gridPane);
@@ -87,12 +87,12 @@ public class Main extends Application {
             //Creating a Button and styling it
             Button button2 = new Button("suggestions");
             gridPane.add(button2, 1, 7);
-            button2.setPrefWidth(400);
+            button2.setPrefWidth(550);
             button2.setPrefHeight(100);
-            button2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+            button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white;");
 
             if((word.length() >5)|| word.equals("")){
-                gridPane.add(button1, 1, 7);
+                gridPane.add(button1, 1, 9);
             }
 
         });
