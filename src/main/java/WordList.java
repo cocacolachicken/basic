@@ -7,40 +7,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WordList {
-    public static void main (String[] args) {
+
+
+    public WordList (boolean answers) {
         try {
-            initialize();
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (answers) initializeAnswers();
+            else initialize();
+        } catch (Exception ignored) {
 
         }
-
-        list = (ArrayList) Filter.letterAtLeastQuantity('a', 1, list);
-
-        printWords();
-
-        try {
-            initialize();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-
-        System.out.println("------------------");
-
-        list = (ArrayList) Filter.letterInQuantity('a', 2, list);
-
-        printWords();
-
     }
 
-    private static ArrayList list = new ArrayList<String>();
+    private ArrayList list = new ArrayList<String>();
 
     /** Sets ArrayList list to the list of words in valid-wordle-words.txt
      *
      * @throws FileNotFoundException valid-wordle-words.txt must not exist
      */
-    public static void initialize () throws FileNotFoundException {
+    public void initialize () throws FileNotFoundException {
         list.clear();
 
         Scanner scanner = new Scanner(new File("src/valid-wordle-words.txt"));
@@ -54,7 +38,7 @@ public class WordList {
      *
      * @throws FileNotFoundException wordle-answers-alphabetical.txt must not exist
      */
-    public static void initializeAnswers () throws FileNotFoundException {
+    public void initializeAnswers () throws FileNotFoundException {
         list.clear();
 
         Scanner scanner = new Scanner(new File("src/wordle-answers-alphabetical.txt"));
@@ -67,13 +51,13 @@ public class WordList {
     /** Sets the current list to another list
      * @param l
      */
-    public static void setList (ArrayList l) {
+    public void setList (ArrayList l) {
         list = l;
     }
 
     /** prints every word in the list
      */
-    public static void printWords () {
+    public void printWords () {
         for (int x = 0; x != list.size(); x++) {
             System.out.println(list.get(x));
         }
@@ -82,7 +66,7 @@ public class WordList {
         }
     }
 
-    public static List getList () {
+    public List getList () {
         return list;
     }
 
@@ -91,7 +75,7 @@ public class WordList {
      * @param g the guess to be processed
      * @return the list after being processed
      */
-    public static List processGuess (Guess g) {
+    public List processGuess (Guess g) {
         list = (ArrayList) g.processGuess(list);
         return list;
     }
@@ -101,7 +85,7 @@ public class WordList {
      * @param g the guess to be processed
      * @return the list after being processed
      */
-    public static List processNewGuess (Guess g) {
+    public List processNewGuess (Guess g) {
         try {
             initialize();
         } catch(Exception ignore) {
