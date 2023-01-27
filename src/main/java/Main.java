@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         //creating text
-        Text text = new Text("Please input the letters you have");
+        Text text = new Text("Please input the letters you have replace unknown letters with ?");
 
 
 
