@@ -14,12 +14,12 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) {
-        //creating label email
+        //creating text
         Text text = new Text("Please input the letters you have");
 
 
 
-        //Creating Text Filed for email
+        //Creating Textfeild for the word input
         TextField textField = new TextField();
         textField.setPrefWidth(100);
         textField.setPrefHeight(50);
@@ -77,6 +77,7 @@ public class Main extends Application {
 
         //Displaying the contents of the stage
         stage.show();
+        //when they press the button or the enter key run the program to get the words
         button.setOnAction(actionEvent ->  {
             String word = textField.getText();
             textField.clear();
@@ -93,7 +94,26 @@ public class Main extends Application {
             if((word.length() >5)|| word.equals("")){
                 gridPane.add(button1, 1, 7);
             }
+
         });
+        textField.setOnAction(ae -> {
+            String word = textField.getText();
+            textField.clear();
+            System.out.println(word);
+            InputProcessor.takeInput(word);
+
+            //Creating a Button and styling it
+            Button button2 = new Button("suggestions");
+            gridPane.add(button2, 1, 7);
+            button2.setPrefWidth(400);
+            button2.setPrefHeight(100);
+            button2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+            if((word.length() >5)|| word.equals("")){
+                gridPane.add(button1, 1, 7);
+            }
+                }
+        );
 
 
     }
