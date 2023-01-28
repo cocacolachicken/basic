@@ -18,9 +18,9 @@ public class WordList {
         }
     }
 
-    private ArrayList list = new ArrayList<String>();
+    private List<String> list = new ArrayList<String>();
 
-    /** Sets ArrayList list to the list of words in valid-wordle-words.txt
+    /** Sets List list to the list of words in valid-wordle-words.txt
      *
      * @throws FileNotFoundException valid-wordle-words.txt must not exist
      */
@@ -34,7 +34,7 @@ public class WordList {
         }
     }
 
-    /** Sets ArrayList list to the list of words in wordle-answers-alphabetical.txt
+    /** Sets List list to the list of words in wordle-answers-alphabetical.txt
      *
      * @throws FileNotFoundException wordle-answers-alphabetical.txt must not exist
      */
@@ -51,7 +51,7 @@ public class WordList {
     /** Sets the current list to another list
      * @param l
      */
-    public void setList (ArrayList l) {
+    public void setList (List<String> l) {
         list = l;
     }
 
@@ -66,7 +66,7 @@ public class WordList {
         }
     }
 
-    public List getList () {
+    public List<String> getList () {
         return list;
     }
 
@@ -75,8 +75,8 @@ public class WordList {
      * @param g the guess to be processed
      * @return the list after being processed
      */
-    public List processGuess (Guess g) {
-        list = (ArrayList) g.processGuess(list);
+    public List<String> processGuess (Guess g) {
+        list = g.processGuess(list);
         return list;
     }
 
@@ -85,13 +85,13 @@ public class WordList {
      * @param g the guess to be processed
      * @return the list after being processed
      */
-    public List processNewGuess (Guess g) {
+    public List<String> processNewGuess (Guess g) {
         try {
             initialize();
         } catch(Exception ignore) {
 
         }
-        list = (ArrayList) g.processGuess(list);
+        list = g.processGuess(list);
         return list;
     }
 }

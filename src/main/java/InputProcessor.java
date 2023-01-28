@@ -29,7 +29,7 @@ public class InputProcessor {
         }
     }
 
-    public static String[] getRandomWords (int x, List l) {
+    public static String[] getRandomWords (int x, List<String> l) {
         String[] s = new String[x];
         Random r = new Random();
 
@@ -42,8 +42,7 @@ public class InputProcessor {
     }
 
     public static String[] getSuggestions () {
-        String[] s = {"ADIEU", "AUDIO", "RAISE", "SOARE", "STARE", "TREAD"};
-        return s;
+        return new String[]{"ADIEU", "AUDIO", "RAISE", "SOARE", "STARE", "TREAD"};
     }
 
     public static List getList () {

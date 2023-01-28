@@ -16,11 +16,6 @@ public class Tester {
         Scanner sc = new Scanner(System.in);
         boolean wordNotFound = true;
         String guess = "";
-
-
-        while (wordNotFound) {
-
-        }
     }
 
 
