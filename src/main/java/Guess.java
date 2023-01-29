@@ -7,7 +7,7 @@ import java.util.List;
  * @author tyler
  * @version 1.0
  */
-public class Guess { // @todo javadoc
+public class Guess {
     private final Letter[] guess = new Letter[5];
 
     /** Constructs a guess based off of string "str"
@@ -34,7 +34,6 @@ public class Guess { // @todo javadoc
     }
 
     /** Processes the list of words, uses inputs based off of guess[] in Filter to process it
-     * @todo improve this
      * If guess[x] is unknown, it does nothing.
      * If guess[x] is IN, then it trims down the list of words to a list of words such that all words have letter guess[x] at position x
      * If guess[x] is ELSEWHERE, then it trims down the list of words to a list of words such that the letter contains letter guess[x] other than words with that letter at position
@@ -48,12 +47,13 @@ public class Guess { // @todo javadoc
     public List<String> processGuess (List<String> words) {
         List<String> l = words;
         String elsewhere = "";
-        for (int x = 0; x != 5; x++) {
+        for (int x = 0; x != 5; x++) { // Adds a list of indices where a yellow letter cannot be placed
             if (guess[x].getStatus() == LetterStatus.IN) {
                 elsewhere += Integer.toString(x);
             }
         }
 
+        // Actually filtering out the words for each letter. If a letter is inputted as '?' it's ignored
         for (int x = 0; x != 5; x++) {
             if (guess[x].getStatus() == LetterStatus.IN) {
                 l = Filter.letterKnown(x, guess[x].getLetter(), l);

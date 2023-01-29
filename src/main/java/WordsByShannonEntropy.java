@@ -58,8 +58,8 @@ public class WordsByShannonEntropy {
      *
      *
      * ** EVEN WORSE SPACE AND TIME COMPLEXITY!!!! Do not use. **
-     * @param wordsLeft
-     * @return
+     * @param wordsLeft List of words that are still able to be chosen
+     * @return a list of every possible word ranked based off of how much information it'll give
      */
     public static List<String> returnInformationList (List<String> wordsLeft) {
         List<Word> w = new ArrayList<>();
@@ -78,8 +78,8 @@ public class WordsByShannonEntropy {
      * Essentially, it adds up all the "information given" values of each possible branches
      *
      * Higher value = more uncertain, meaning it's likely more information will be given following that specific guess.
-     * @param w
-     * @param words
+     * @param w word to be calculated
+     * @param words list of words to calculate it based off of
      * @return
      */
     public static double calculateSEValue (String w, List<String> words) {
@@ -100,13 +100,15 @@ public class WordsByShannonEntropy {
     }
 
     /**
-     * A recursive loop which nests 4 loops (one for if a letter is correct, is wrong, and is elsewhere).
+     * A recursive loop which nests a loop (that does so three times) for each letter in "w" (one for if a letter
+     * is correct, one for if a letter is wrong, and one for if a letter is elsewhere).
+     *
      *
      * Default case = calcInfo called
      * @param indices tracks the value of each iteration of the loop
      * @param w word that needs its value calculated
      * @param words list of words to run the calcs on
-     * @return returns the value of this branch
+     * @return returns the value of the branch
      */
     public static double autoLoop (int[] indices, String w, List<String> words) {
         double total = 0;
@@ -140,10 +142,11 @@ public class WordsByShannonEntropy {
 
     /**
      * Calculates the value of information given according to the following equation:
-     * let x = probability of the pattern
+     * let x = number of words which are still able to be found after a pattern is shown
      * (x/number of words) * log2(number of words / x)
      *
-     * @param pattern a
+     * @param pattern the pattern in question. every character corresponds to a letter in string "w" – n for not in, c
+     *                for correct, and e for elsewhere
      * @param w a
      * @param words a
      * @return Mentioned earlier
