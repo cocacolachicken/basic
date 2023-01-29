@@ -3,12 +3,13 @@ package main.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
+/** A console-based interface for the application.
  * @author tyler
  * @version 1.0
  */
 public class Tester {
 
+    // Class for the terminal output of the program
     public static void main (String args[]) throws Exception {
         WordList l = new WordList(true);
         l.initialize();

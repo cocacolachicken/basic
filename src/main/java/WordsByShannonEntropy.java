@@ -9,8 +9,12 @@ import java.util.stream.IntStream;
 
 
 /**
+ * Heavily inspired by https://www.youtube.com/watch?v=v68zYyaEmEA, I would not have gotten the idea if it wasn't for that video
+ * also used https://www.youtube.com/watch?v=bkLHszLlH34 to help me understand the concept better
+ *
  * @author tyler
  * @version 1.0
+ * @deprecated not optimized
  */
 public class WordsByShannonEntropy {
 
@@ -22,7 +26,9 @@ public class WordsByShannonEntropy {
     }
 
     /** Returns a list sorted such that the words with the lower calculated uncertainty (based off of "Shannon Entropy")
-     * are after words with a higher calculated uncertainty
+     * are after words with a higher calculated uncertainty.
+     *
+     * Uncertainty is the average value of information given based off of all the probable guesses
      *
      * Note: words with duplicate letters are considered with 1/3 of the calculated value. This is because words with
      * duplicate letters tend to have a lot of duplicate cases which will result in
@@ -48,7 +54,7 @@ public class WordsByShannonEntropy {
         return w.stream().map(Word::getWord).collect(Collectors.toList());
     }
 
-    /**
+    /** The same as the previous class, except it accounts for EVERY POSSIBLE WORDLE WORD
      *
      *
      * ** EVEN WORSE SPACE AND TIME COMPLEXITY!!!! Do not use. **
@@ -69,7 +75,7 @@ public class WordsByShannonEntropy {
     }
 
     /** Calculates the average uncertainty for a given word (String w) to the possible outcomes
-     *
+     * Essentially, it adds up all the "information given" values of each possible branches
      *
      * Higher value = more uncertain, meaning it's likely more information will be given following that specific guess.
      * @param w
@@ -94,7 +100,8 @@ public class WordsByShannonEntropy {
     }
 
     /**
-     * A recursive loop which nests 4 loops (one for if a letter is correct, is wrong, and is elsewhere)
+     * A recursive loop which nests 4 loops (one for if a letter is correct, is wrong, and is elsewhere).
+     *
      * Default case = calcInfo called
      * @param indices tracks the value of each iteration of the loop
      * @param w word that needs its value calculated
@@ -105,7 +112,8 @@ public class WordsByShannonEntropy {
         double total = 0;
         StringBuilder s = new StringBuilder();
         for (int x = 0; x != 3; x++) {
-            if (indices.length == w.length()) {
+            if (indices.length == w.length()) { // Base case
+                // Compiles a pattern based off of int[] indices;
                 StringBuilder taken = new StringBuilder();
                 for (x = 0; x != indices.length; x++) {
                     if (indices[x] == 0) {
@@ -120,6 +128,7 @@ public class WordsByShannonEntropy {
 
                 return calcInfo(s.toString(), taken.toString(), w, words);
             } else {
+                // Recursively calls itself to layer another loop, adding its own index to the array.
                 int[] n = {x};
                 total += autoLoop(IntStream.concat(Arrays.stream(indices), Arrays.stream(n)).toArray(), w, words);
             }
@@ -130,7 +139,9 @@ public class WordsByShannonEntropy {
 
 
     /**
-     * Calculates information that will be given based off of if a guess ("w") matches a certain "case"
+     * Calculates the value of information given according to the following equation:
+     * let x = probability of the pattern
+     * (x/number of words) * log2(number of words / x)
      *
      * @param pattern a
      * @param w a
@@ -143,44 +154,51 @@ public class WordsByShannonEntropy {
         int patternSize = pattern.length();
 
         for (int x = 0; x != patternSize; x++) {
-            if (pattern.charAt(x) == 'n') { // Make sure to account for case where there's a green letter with this green letter
+            if (pattern.charAt(x) == 'n') {
                 boolean condition = true;
                 for (int j = 0; j != patternSize; j++) {
                     if ((pattern.charAt(j) == 'c' || pattern.charAt(j) == 'e') && w.charAt(j) == w.charAt(x)) {
                         condition = false;
                         break;
-                    }
+                    } // If there's a letter that is the same letter as the one being examined and its matching pattern
+                    // letter isn't 'n', then it ignores taking away all words that contains the letter n.
+                    // This is so that if you have a case where you have a duplicate letter though one is green
+                    // and the other gray it doesn't take away all words that have that duplicate letter
                 }
-                if (condition)
-                words = Filter.letterNotIn(w.charAt(x), words);
+                if (condition) {
+                    words = Filter.letterNotIn(w.charAt(x), words);
+                }
             } if (pattern.charAt(x) == 'c') {
+                // Cuts out words that don't contain the letter at index x
                 words = Filter.letterKnown(x, w.charAt(x), words);
             } if (pattern.charAt(x) == 'e') {
-                if (!ignore[x]) {
-                    int quantity = 0;
+                if (!ignore[x]) { // Makes it so that it computes a yellow in a certain letter just once; e.g. two yellow "p"'s in apple will only have it be processed in the first p
+                    int quantity = 0; // counts amount of p's in the word
                     StringBuilder notAt = new StringBuilder();
                     StringBuilder isAt = new StringBuilder();
-                    boolean alreadyDone = false;
+                    boolean alreadyDone = false; // Condition to disqualify certain invalid cases;
 
-                    for (int j = 0; j != patternSize; j++) {
+                    for (int j = 0; j != patternSize; j++) { // Loops through the pattern to check for duplicate letters, because the yellow is super dependent on this
                         if (w.charAt(x) == w.charAt(j)) {
                             if (pattern.charAt(j) == 'e') {
                                 quantity++;
-                                notAt.append(x);
+                                notAt.append(x); // Adds a space where the character isn't at
                                 ignore[x] = true;
-                                if (alreadyDone) return 0;
+                                if (alreadyDone) return 0; // Invalidates; explained below
                             } else if (pattern.charAt(j) == 'n') {
-                                notAt.append(x);
+                                notAt.append(x); // Adds a space where the character isn't at
                                 ignore[x] = true;
-                                alreadyDone = true;
-                            } else if (pattern.charAt(j) == 'c') {
+                                alreadyDone = true; // Invalidates the case of a yellow duplicate coming after a letter that is gray
+                                // E.G. all cases where the second p of the word apple is yellow but the first gray are invalid because a yellow space is awarded to the first match
+                            } else if (pattern.charAt(j) == 'c') { //
                                 quantity ++;
-                                isAt.append(x);
+                                isAt.append(x); // Adds a space where the character must be at
                                 ignore[x] = true;
                             }
                         }
                     }
 
+                    // Calls the method to actually filter
                     words = Filter.letterInQuantity(w.charAt(x), notAt + taken, isAt.toString(), quantity, words);
                 }
             }
@@ -189,7 +207,8 @@ public class WordsByShannonEntropy {
         double info = words.size();
 
         if (info != 0) {
-            return (info / initial) * (Math.log(1 / (info / initial)) / Math.log(2));
+            // Returns the information given by a guess;
+            return (info / initial) * (Math.log(initial/info) / Math.log(2));
         } else {
             return 0;
         }
@@ -197,7 +216,7 @@ public class WordsByShannonEntropy {
 
 
     /**
-     * A class used to store information about a word and its entropy value
+     * class used to store information about a word and its entropy value
      */
     private static class Word {
         private String w;

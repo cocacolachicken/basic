@@ -2,11 +2,12 @@ package main.java;
 
 import java.util.List;
 
-/**
+/** A class that represents a guess made in Wordle
+ *
  * @author tyler
  * @version 1.0
  */
-public class Guess {
+public class Guess { // @todo javadoc
     private final Letter[] guess = new Letter[5];
 
     /** Constructs a guess based off of string "str"
@@ -32,23 +33,15 @@ public class Guess {
         }
     }
 
-    /** Returns a Letter from this guess
-     *
-     * @param x the index of the guess needed
-     * @return the letter requested based off of index x
-     */
-    public Letter getGuessLetter (int x) {
-        return guess[x];
-    }
-
     /** Processes the list of words, uses inputs based off of guess[] in Filter to process it
-     *
+     * @todo improve this
      * If guess[x] is unknown, it does nothing.
      * If guess[x] is IN, then it trims down the list of words to a list of words such that all words have letter guess[x] at position x
      * If guess[x] is ELSEWHERE, then it trims down the list of words to a list of words such that the letter contains letter guess[x] other than words with that letter at position
      * at a letter where guess[num] is IN or the position of guess[x]
      *
-     * Note: please use it like "list = guessName.processGuess(list);" because list will get depleted after he usage
+     * Note: please use it like "list = guessName.processGuess(list);" because list will get depleted after the usage
+     *
      * @param words the list of words that will be processed according to the
      * @return the list of words after filtering words based off of this guess
      */

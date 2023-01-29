@@ -12,7 +12,11 @@ import java.util.Scanner;
  */
 public class WordList {
 
-
+    /** Creates an instance of WordList
+     *
+     * @param answers if answers is false, it initializes its words from valid-wordle-words.txt; else it initializes from
+     *                wordle-answers-alphabetical.txt
+     */
     public WordList (boolean answers) {
         try {
             if (answers) initializeAnswers();
@@ -59,8 +63,7 @@ public class WordList {
         list = l;
     }
 
-    /** prints every word in the list
-     */
+    // Prints every word in the list
     public void printWords () {
         for (int x = 0; x != list.size(); x++) {
             System.out.println(list.get(x));
