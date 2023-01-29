@@ -1,5 +1,9 @@
 package main.java;
 
+/**
+ * @author tyler
+ * @version 1.0
+ */
 public class Letter {
     private char letter;
     private LetterStatus status;

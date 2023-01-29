@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author tyler
+ * @version 1.0
+ */
 public class WordList {
 
 
@@ -70,24 +74,15 @@ public class WordList {
         return list;
     }
 
-    /** Processes the guess in this method
-     *
-     * @param g the guess to be processed
-     * @return the list after being processed
-     */
-    public List<String> processGuess (Guess g) {
-        list = g.processGuess(list);
-        return list;
-    }
-
     /** Processes the guess in this method with a new list of words
      *
      * @param g the guess to be processed
      * @return the list after being processed
      */
-    public List<String> processNewGuess (Guess g) {
+    public List<String> processNewGuess (Guess g, boolean answers) {
         try {
-            initialize();
+            if (answers) initializeAnswers();
+            else initialize();
         } catch(Exception ignore) {
 
         }

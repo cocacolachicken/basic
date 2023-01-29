@@ -5,16 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * @author tyler
+ * @version 1.0
+ */
 public class Filter {
-    public static void main (String[] args) {
-        WordList l = new WordList(true);
-
-        l.setList(letterInQuantity('a', "0", "4", 2, l.getList()));
-        l.printWords();
-    }
-
-
-
     /** Combs through a list of words ("words") and returns a sublist of "words" such that the elements retained in the sublist
      * are words that have letter "letter" at index "position"
      *

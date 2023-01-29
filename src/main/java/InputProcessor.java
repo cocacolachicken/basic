@@ -1,11 +1,14 @@
 package main.java;
-
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author tyler
+ * @version 1.0
+ */
 public class InputProcessor {
-    public static WordList l = new WordList(true);
+    private static WordList l = new WordList(true);
+    private static int[][] freq;
 
     /** Takes in a String "s" and filters WordList based off of the guess
      * If the String "s" is an invalid guess based off of the constructor for the Guess class, then
@@ -16,10 +19,11 @@ public class InputProcessor {
     public static void takeInput (String s) {
         Guess g;
         try {
-            System.out.println("aaa");
             g = new Guess(s);
             System.out.println("guess created");
-            l.processGuess(g);
+            freq = FrequencyInfo.getFrequency(l.getList());
+            l.processNewGuess(g, true);
+            l.setList(FrequencyInfo.sortByValue(l.getList(), freq));
             System.out.println("Success!");
             l.printWords();
 
@@ -35,17 +39,18 @@ public class InputProcessor {
 
         for (int i = 0; i != x; i ++) {
             System.out.println("s");
-            s[i] = (String) l.get(r.nextInt(l.size()));
+            s[i] = l.get(r.nextInt(l.size()));
         }
 
         return s;
     }
 
-    public static String[] getSuggestions () {
-        return new String[]{"ADIEU", "AUDIO", "RAISE", "SOARE", "STARE", "TREAD"};
+    public static String getSuggestions () {
+        return ("Try ADIEU, AUDIO, RAISE, SOARE, STARE, TREAD.");
     }
 
-    public static List getList () {
+
+    public static List<String> getList () {
         return l.getList();
     }
 }

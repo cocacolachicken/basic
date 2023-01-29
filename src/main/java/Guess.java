@@ -2,30 +2,11 @@ package main.java;
 
 import java.util.List;
 
+/**
+ * @author tyler
+ * @version 1.0
+ */
 public class Guess {
-    public static void main (String[] args) {
-        try {
-            new Guess("as");
-        } catch (Exception e) {
-            System.out.println("Unsuccessful 1");
-        }
-        try {
-            new Guess("mna*m");
-        } catch (Exception e) {
-            System.out.println("Unsuccessful 2");
-        }
-        try {
-            new Guess("Board");
-        } catch (Exception e) {
-            System.out.println("Unsuccessful 3");
-        }
-        try {
-            new Guess("bOArD");
-        } catch (Exception e) {
-            System.out.println("Unsuccessful 4");
-        }
-    }
-
     private final Letter[] guess = new Letter[5];
 
     /** Constructs a guess based off of string "str"
