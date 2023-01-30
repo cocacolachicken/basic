@@ -76,20 +76,4 @@ public class WordList {
     public List<String> getList () {
         return list;
     }
-
-    /** Processes the guess in this method with a new list of words
-     *
-     * @param g the guess to be processed
-     * @return the list after being processed
-     */
-    public List<String> processNewGuess (Guess g, boolean answers) {
-        try {
-            if (answers) initializeAnswers();
-            else initialize();
-        } catch(Exception ignore) {
-
-        }
-        list = g.processGuess(list);
-        return list;
-    }
 }

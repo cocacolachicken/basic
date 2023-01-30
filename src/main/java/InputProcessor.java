@@ -25,7 +25,8 @@ public class InputProcessor {
             System.out.println("guess created");
 
             // Processes the guess to get the list of words still allowed
-            l.processNewGuess(g, true);
+            l.initializeAnswers();
+            l.setList(g.processGuess(l.getList()));
 
             // Gets frequency info (int[][]) on the list
             freq = FrequencyInfo.getFrequency(l.getList());
