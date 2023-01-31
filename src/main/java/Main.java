@@ -93,6 +93,8 @@ public class Main extends Application {
             System.out.println(word);
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().toString();
+            suggestions = suggestions.substring(1, suggestions.length() - 1)+ " ";
+
             button1.setVisible(false);
 
             if (word.equals("?????")) {
