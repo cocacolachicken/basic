@@ -74,6 +74,7 @@ public class Main extends Application {
         text.setStyle("-fx-font: normal bold 20px 'Comic Sans' ");
         gridPane.add(button1, 1, 9);
         gridPane.setStyle("-fx-background-color: BEIGE;");
+        button1.setVisible(false);
 
         //Creating a scene object
         Scene scene = new Scene(gridPane);
