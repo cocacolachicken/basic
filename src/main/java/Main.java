@@ -97,7 +97,7 @@ public class Main extends Application {
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white;");
             button2.setFont(Font.font(40));
-            if((word.length() >5)|| word.equals("")){
+            if((word.length() >5)||(word.length() <5)){
                 button2.setVisible(false);
                 gridPane.add(button1, 1, 9);
 
@@ -117,7 +117,7 @@ public class Main extends Application {
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white; 20");
             button2.setFont(Font.font(40));
-            if((word.length() >5)|| word.equals("")){
+            if((word.length() >5)||(word.length() <5)){
                 gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
             }
