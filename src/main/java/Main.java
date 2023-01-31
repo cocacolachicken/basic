@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.util.Random;
 
 /**
  * @author John Laquerre
@@ -63,7 +64,7 @@ public class Main extends Application {
         gridPane.add(text, 1, 0);
         gridPane.add(textField, 1, 1);
         gridPane.add(button, 1, 5);
-        gridPane.add(button1, 1, 9);
+
 
         //Styling nodes
         button1.setFont(Font.font(40));
@@ -87,13 +88,12 @@ public class Main extends Application {
         stage.show();
         //when they press the button or the enter key run the program to get the words
         button.setOnAction(actionEvent ->  {
-            button1.setVisible(false);
             String word = textField.getText();
             textField.clear();
             System.out.println(word);
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().toString();
-
+            button1.setVisible(false);
 
             if (word.equals("?????")) {
                 suggestions = InputProcessor.getSuggestions();
@@ -108,6 +108,7 @@ public class Main extends Application {
             button2.setFont(Font.font(40));
             if((word.length() !=5)){
                 button2.setVisible(false);
+                gridPane.add(button1, 1, 9);
                 button1.setVisible(true);
 
             } else{
