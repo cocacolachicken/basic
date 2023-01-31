@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import main.java.Filter;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class FilterTest {
         words.add("banana");
         words.add("orange");
 
-        List<String> filteredList = Filter.letterInQuantity('p', 2, words);
+        List<String> filteredList = Filter.letterInQuantity('p', "", "",  2, words);
 
         // checks that the returned list is the same size as the list of words that contain the desired letter at the desired position
         assertEquals(1, filteredList.size());

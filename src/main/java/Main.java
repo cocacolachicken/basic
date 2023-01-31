@@ -1,8 +1,6 @@
 package main.java;
 
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-import static main.java.InputProcessor.l;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +12,10 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * @author john
+ * @version 1.0
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) {
@@ -89,7 +91,12 @@ public class Main extends Application {
             textField.clear();
             System.out.println(word);
             InputProcessor.takeInput(word);
-            String suggestions = l.getList().get(0).toString();
+            String suggestions = InputProcessor.getList().get(0);
+
+            if (word.equals("?????")) {
+                suggestions = InputProcessor.getSuggestions();
+            }
+
             //Creating a Button and styling it
             Button button2 = new Button(suggestions);
 
@@ -109,7 +116,7 @@ public class Main extends Application {
             textField.clear();
             System.out.println(word);
             InputProcessor.takeInput(word);
-            String suggestions = l.getList().get(0).toString();
+            String suggestions = InputProcessor.getList().get(0);
             //Creating a Button and styling it
             Button button2 = new Button(suggestions);
 
