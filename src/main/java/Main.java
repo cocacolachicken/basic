@@ -72,7 +72,7 @@ public class Main extends Application {
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button1.setStyle("-fx-background-color: RED; -fx-text-fill: white;");
         text.setStyle("-fx-font: normal bold 20px 'Comic Sans' ");
-
+        gridPane.add(button1, 1, 9);
         gridPane.setStyle("-fx-background-color: BEIGE;");
 
         //Creating a scene object
@@ -94,7 +94,7 @@ public class Main extends Application {
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().toString();
             suggestions = suggestions.substring(1, suggestions.length() - 1)+ " ";
-
+            //hide buttons
             button1.setVisible(false);
 
             if (word.equals("?????")) {
@@ -108,9 +108,10 @@ public class Main extends Application {
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white;");
             button2.setFont(Font.font(30));
+            //if there is an invalid word automatic error
             if((word.length() !=5)){
                 button2.setVisible(false);
-                gridPane.add(button1, 1, 9);
+
                 button1.setVisible(true);
 
             } else{
@@ -138,7 +139,6 @@ public class Main extends Application {
             button2.setFont(Font.font(40));
             //if there is an invalid word automatic error
             if((word.length() !=5)){
-                gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
                 button1.setVisible(true);
             }
