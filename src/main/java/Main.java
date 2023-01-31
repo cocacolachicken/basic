@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.util.Random;
 
 /**
  * @author john
@@ -91,7 +92,7 @@ public class Main extends Application {
             textField.clear();
             System.out.println(word);
             InputProcessor.takeInput(word);
-            String suggestions = InputProcessor.getList().get(0);
+            String suggestions = InputProcessor.getList().get((int) (Math.random() * InputProcessor.getList().size()));
             button1.setVisible(false);
 
             if (word.equals("?????")) {
