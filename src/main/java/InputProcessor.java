@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 1.0
  */
 public class InputProcessor {
-    private static WordList l = new WordList(true);
+    public static WordList l = new WordList(true);
     private static int[][] freq;
     private static Guess g;
 
