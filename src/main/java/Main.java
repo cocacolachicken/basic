@@ -118,6 +118,7 @@ public class Main extends Application {
             System.out.println(word);
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().get(0);
+            button1.setVisible(false);
             //Creating a Button and styling it
             Button button2 = new Button(suggestions);
 
