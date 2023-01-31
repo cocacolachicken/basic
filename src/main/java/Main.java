@@ -126,21 +126,22 @@ public class Main extends Application {
             if (word.equals("?????")) {
                 suggestions = InputProcessor.getSuggestions();
             }
-            //Creating a Button and styling it
+            //Creating a Button and styling it for the words you should input
             Button button2 = new Button(suggestions);
 
             button2.setPrefWidth(625);
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white; 20");
             button2.setFont(Font.font(40));
+            //if there is an invalid word automatic error
             if((word.length() !=5)){
                 gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
                 button1.setVisible(true);
             }
-            else{
+            else{ //set the suggestions visible
                 button2.setVisible(true);
-            }
+            }// add the button to the game
             gridPane.add(button2, 1, 7);
                 }
         );
