@@ -92,7 +92,7 @@ public class Main extends Application {
             textField.clear();
             System.out.println(word);
             InputProcessor.takeInput(word);
-            String suggestions = InputProcessor.getList().get((int) (Math.random() * InputProcessor.getList().size()));
+            String suggestions = InputProcessor.getList().toString();
             button1.setVisible(false);
 
             if (word.equals("?????")) {
