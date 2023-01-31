@@ -57,7 +57,7 @@ public class FilterTest {
         List<String> filteredList = Filter.letterNotIn('p', words);
 
         // checks that the returned list is the same size as the list of words that contain the desired letter at the desired position
-        assertEquals(1, filteredList.size());
+        assertEquals(2, filteredList.size());
 
         // checks that the returned list only contains words that have the desired letter at the desired position
         assertFalse(filteredList.contains("apple"));

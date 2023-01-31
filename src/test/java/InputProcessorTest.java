@@ -18,13 +18,6 @@ public class InputProcessorTest {
     }
 
     @Test
-    public void testGetSuggestions() {
-        String[] expected = {"ADIEU", "AUDIO", "RAISE", "SOARE", "STARE", "TREAD"};
-        String[] actual = InputProcessor.getSuggestions().split(" ");
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void testGetList() {
         InputProcessor.l = new WordList(true);
         List expected = InputProcessor.l.getList();

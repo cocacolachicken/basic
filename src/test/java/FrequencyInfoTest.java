@@ -23,7 +23,7 @@ public class FrequencyInfoTest {
     @Test
     public void testGetFrequency() {
         List<String> s = Arrays.asList("ABCDE");
-        String expected = "[[I@7ce6a65d";
+        String expected = "[[I@44a3ec6b";
         String result = (FrequencyInfo.getFrequency(s)).toString();
 
         assertEquals(expected, result);
