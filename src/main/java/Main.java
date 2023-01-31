@@ -108,7 +108,10 @@ public class Main extends Application {
             if((word.length() !=5)){
                 button2.setVisible(false);
                 gridPane.add(button1, 1, 9);
+                button1.setVisible(true);
 
+            } else{
+                button2.setVisible(true);
             }
             gridPane.add(button2, 1, 7);
         });
@@ -129,6 +132,10 @@ public class Main extends Application {
             if((word.length() !=5)){
                 gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
+                button1.setVisible(true);
+            }
+            else{
+                button2.setVisible(true);
             }
             gridPane.add(button2, 1, 7);
                 }
