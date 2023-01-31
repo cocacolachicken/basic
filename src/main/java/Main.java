@@ -105,7 +105,7 @@ public class Main extends Application {
             button2.setPrefWidth(625);
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white;");
-            button2.setFont(Font.font(40));
+            button2.setFont(Font.font(30));
             if((word.length() !=5)){
                 button2.setVisible(false);
                 gridPane.add(button1, 1, 9);
