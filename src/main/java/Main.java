@@ -92,6 +92,7 @@ public class Main extends Application {
             System.out.println(word);
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().get(0);
+            button1.setVisible(false);
 
             if (word.equals("?????")) {
                 suggestions = InputProcessor.getSuggestions();
@@ -104,7 +105,7 @@ public class Main extends Application {
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white;");
             button2.setFont(Font.font(40));
-            if((word.length() >5)||(word.length() <5)){
+            if((word.length() !=5)){
                 button2.setVisible(false);
                 gridPane.add(button1, 1, 9);
 
@@ -124,7 +125,7 @@ public class Main extends Application {
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white; 20");
             button2.setFont(Font.font(40));
-            if((word.length() >5)||(word.length() <5)){
+            if((word.length() !=5)){
                 gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
             }
