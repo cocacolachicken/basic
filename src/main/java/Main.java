@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 /**
- * @author john
- * @version 1.0
+ * @author John Laquerre
+ * @version 6.7.2
  */
 public class Main extends Application {
     @Override
     public void start(Stage stage) {
-        //creating text
+        //creating text for explanition of how to use
         Text text = new Text("Please input the letters you have replace unknown letters with ?\nFor letters that you know the exact placement of make them uppercase\nFor letters that you know but not the exact position make then lowercase");
         text.setX(100);
         text.setY(50);
@@ -127,21 +127,22 @@ public class Main extends Application {
             if (word.equals("?????")) {
                 suggestions = InputProcessor.getSuggestions();
             }
-            //Creating a Button and styling it
+            //Creating a Button and styling it for the words you should input
             Button button2 = new Button(suggestions);
 
             button2.setPrefWidth(625);
             button2.setPrefHeight(100);
             button2.setStyle("-fx-background-color: PURPLE; -fx-text-fill: white; 20");
             button2.setFont(Font.font(40));
+            //if there is an invalid word automatic error
             if((word.length() !=5)){
                 gridPane.add(button1, 1, 7);
                 button2.setVisible(false);
                 button1.setVisible(true);
             }
-            else{
+            else{ //set the suggestions visible
                 button2.setVisible(true);
-            }
+            }// add the button to the game
             gridPane.add(button2, 1, 7);
                 }
         );
