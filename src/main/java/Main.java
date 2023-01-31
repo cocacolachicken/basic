@@ -122,6 +122,10 @@ public class Main extends Application {
             InputProcessor.takeInput(word);
             String suggestions = InputProcessor.getList().get(0);
             button1.setVisible(false);
+
+            if (word.equals("?????")) {
+                suggestions = InputProcessor.getSuggestions();
+            }
             //Creating a Button and styling it
             Button button2 = new Button(suggestions);
 
